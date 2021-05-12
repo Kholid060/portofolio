@@ -14,7 +14,14 @@ export default function ProjectCard({ project }) {
 					</div>
 			}
 			<div className="px-4 pt-4 pb-16">
-				<a href={project.demo} target="_blank" className="text-xl font-semibold">{project.title}</a>
+				<a
+					href={project.demo}
+					target="_blank"
+					className="text-xl font-semibold"
+					rel="noopener noreferrer"
+				>
+					{project.title}
+				</a>
 				<p className="mb-1">{project.content}</p>
 				<div className="pb-4 flex items-center absolute bottom-0 w-full left-0 px-4">
 					{	
