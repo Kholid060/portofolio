@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: theme('colors.gray.200');
+	background-color: theme('colors.gray.900');
+}
+
+[role="button"], button {
+	@apply bg-white bg-opacity-5 hover:bg-opacity-10 transition-colors rounded-lg focus:ring-4 focus:outline-none;
+}
+
+button.primary, [role="button"].primary {
+	@apply bg-blue-600 hover:bg-blue-600 hover:bg-opacity-20 transition px-6 rounded-lg py-3;
+}

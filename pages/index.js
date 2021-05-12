@@ -1,65 +1,71 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Icon from '@mdi/react';
+import { mdiGithub, mdiEmail, mdiTwitter } from '@mdi/js';
+import { getAllContent } from '../lib/api';
+import Projects from '../components/Projects';
 
-export default function Home() {
+export default function Home({ projects }) {
+  const techs = ['HTML', '(S)CSS', 'Vue.js', 'Next.js', 'Javascript (ES6+)', 'Express', 'Node.js'];
+  const socials = [
+    { name: 'Email', url: 'mailto:kholid060@gmail.com', icon: mdiEmail },
+    { name: 'GitHub', url: 'https://github.com/kholid060', icon: mdiGithub },
+    { name: 'Twitter', url: 'https://twitter.com/kholid060', icon: mdiTwitter },
+  ];
+
   return (
-    <div className={styles.container}>
+    <main className="container">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Ahmad Kholid</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <section
+        className="pt-24 md:pt-40 pb-48"
+        style={{ minHeight: '500px' }}
+      >
+        <h1 className="text-5xl font-semibold mb-4 bg-gradient-to-br from-blue-400 to-indigo-600 text-transparent bg-clip-text">
+          Hi, I'm Kholid. <br/>
+          Front-End Developer.
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+        <p className="max-w-xl">
+          I'm a self-taught front-end developer based in Indonesia. And focused on building interactive web apps and some browser extensions.
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="mt-4">
+          <p>Here are a few technologies I've been working with recently:</p> 
+          <ul className="list-disc list-inside grid grid-cols-2 max-w-md mt-4">
+            {
+              techs.map((tech) => <li>{tech}</li>)
+            }
+          </ul>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+        <a href="mailto:kholid060@gmail.com" className="mt-12 inline-block" rel="noopener noreferrer">
+          <button className="primary">Contact me</button>
         </a>
-      </footer>
-    </div>
+      </section>
+      <Projects projects={projects}></Projects>
+      <section className="py-24 border-t border-gray-800 text-center">
+        <ul className="space-x-8">
+          {
+            socials.map((social) => 
+              <li className="inline-block">
+                <a href={social.url} title={social.name} target="_blank" rel="noopener noreferrer">
+                  <Icon path={social.icon} size={1.2}></Icon>
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </section>
+    </main>
   )
+}
+
+export async function getStaticProps() {
+  const projects = getAllContent('_projects').sort((a, b) => b.id - a.id);
+
+  return {
+    props: {
+      projects,
+    },
+  };
 }
