@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useTransition, animated } from 'react-spring';
-import { ArchiveIcon, GlobeAltIcon, PuzzleIcon, ViewGridIcon } from '@heroicons/react/solid';
 import ProjectCard from './ProjectCard';
 
 export default function Projects({ projects }) {

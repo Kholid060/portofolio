@@ -10,7 +10,7 @@ export default function ProjectCard({ project }) {
 			{
 				project.image &&
 					<div className="h-56 relative rounded-b-lg overflow-hidden">
-						<Image src={`/projects${project.image}`} layout="fill" objectFit="cover" />
+						<Image alt={project.title} src={`/projects${project.image}`} layout="fill" objectFit="cover" />
 					</div>
 			}
 			<div className="px-4 pt-4 pb-16">
@@ -19,13 +19,27 @@ export default function ProjectCard({ project }) {
 				<div className="pb-4 flex items-center absolute bottom-0 w-full left-0 px-4">
 					{	
 						project.demo &&
-							<a href={project.demo} className="p-2 mr-2" role="button" target="_blank" rel="noopener noreferrer">
+							<a
+								href={project.demo}
+								className="p-2 mr-2"
+								role="button"
+								target="_blank"
+								rel="noopener noreferrer"
+								title="Open demo"
+							>
 								<Icon size="24px" path={mdiOpenInNew}></Icon>
 							</a>
 					}
 					{
 						project.github &&
-							<a href={`https://github.com/${project.github}`} className="p-2" role="button" target="_blank" rel="noopener noreferrer">
+							<a
+								href={`https://github.com/${project.github}`}
+								className="p-2"
+								role="button"
+								title="Open GitHub"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<Icon size="24px" path={mdiGithub}></Icon>
 							</a>
 					}

@@ -13,5 +13,6 @@ body {
 }
 
 button.primary, [role="button"].primary {
+	color: white;
 	@apply bg-blue-600 hover:bg-blue-600 hover:bg-opacity-20 transition px-6 rounded-lg py-3;
 }
