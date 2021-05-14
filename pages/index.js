@@ -16,6 +16,7 @@ export default function Home({ projects }) {
     <main className="container">
       <Head>
         <title>Ahmad Kholid</title>
+        <meta name="google-site-verification" content="aAgYE222QWO3SsuHi1POvt_-ulDwtEpuxtMpZSM3PgQ" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
